@@ -1,3 +1,7 @@
+-- =========================
+-- 1. TABLE CREATION
+-- =========================
+
 CREATE TABLE orders (
     order_id VARCHAR(50),
     customer_id VARCHAR(50),
@@ -47,6 +51,10 @@ CREATE TABLE payments (
     payment_value DECIMAL(10,2)
 );
 
+-- =========================
+-- 2. DATA LOADING
+-- =========================
+
 LOAD DATA INFILE "C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/order_items.csv"
 INTO TABLE order_items
 FIELDS TERMINATED BY ','
@@ -68,19 +76,16 @@ ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 
-LOAD DATA INFILE "C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/orders.csv"
-INTO TABLE orders
-FIELDS TERMINATED BY ','
-ENCLOSED BY '"'
-LINES TERMINATED BY '\n'
-IGNORE 1 ROWS;
-
 LOAD DATA INFILE "C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/customers.csv"
 INTO TABLE customers
 FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
+
+-- =========================
+-- 3. DATA CLEANING
+-- =========================
 
 
 TRUNCATE TABLE orders;
@@ -133,6 +138,11 @@ product_weight_g = NULLIF(@product_weight_g,''),
 product_length_cm = NULLIF(@product_length_cm,''),
 product_height_cm = NULLIF(@product_height_cm,''),
 product_width_cm = NULLIF(@product_width_cm,'');
+
+
+-- =========================
+-- 4. EXPLORATORY ANALYSIS
+-- =========================
 
 -- This script is for counting total number of orders
 SELECT COUNT(*) AS total_orders
@@ -190,7 +200,9 @@ INNER JOIN order_items ON orders.order_id = order_items.order_id
 GROUP BY DATE_FORMAT(orders.order_purchase_timestamp, '%Y-%m')
 ORDER BY total_orders DESC;
 
-
+-- =========================
+-- 5. BUSINESS ANALYSIS
+-- =========================
 /*
 Consolidate query. This script is for obtaining the Average Order Value (AOV), number of orders and total revenue (Revenue = price + freight_value) all per year-month
 Sales Overview 
@@ -244,7 +256,8 @@ WITH customers_table AS (
 	HAVING COUNT(orders.order_id) > 1
 )
 SELECT COUNT(*) AS repeat_customers,
-(COUNT(*)/96096) * 100 AS repeat_customer_rate -- Divided total repear_customers / total_unique_customers
+(COUNT(*) * 100) / 
+(SELECT COUNT(DISTINCT customer_unique_id) FROM customers) AS repeat_customer_rate -- Divided total repear_customers / total_unique_customers
 FROM customers_table;
 
 -- This script is for obtaining the customer revenue compared with the total
