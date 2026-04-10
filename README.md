@@ -32,7 +32,7 @@ The goal of this analysis is to answer key business questions:
 
 ## 📊 Dashboard Preview
 
-![Dashboard Preview](images/dashboard_preview.png)
+![Dashboard Preview](images/dashboard_preview.PNG)
 
 ---
 
