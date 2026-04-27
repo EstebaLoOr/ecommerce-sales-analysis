@@ -1,109 +1,192 @@
-# E-commerce Sales Analysis (SQL + Power BI)
+# 📊 E-commerce Sales Analysis (SQL + Power BI)
 
 ## 📌 Project Overview
 
-This project analyzes an e-commerce dataset to uncover key business insights related to sales performance, product performance, and customer behavior.
+This project analyzes an e-commerce transactional dataset to uncover valuable business insights related to **sales performance, product contribution, customer retention, and revenue trends**.
 
-The analysis was conducted using SQL for data extraction and transformation, and Power BI for building an interactive dashboard.
-
----
-
-## 🎯 Business Objectives
-
-The goal of this analysis is to answer key business questions:
-
-- How has revenue evolved over time?
-- Which products generate the most revenue?
-- Are sales concentrated in a few products or distributed across many?
-- What percentage of customers are repeat buyers?
-- How much revenue comes from repeat customers?
+Using **SQL (MySQL)** for data extraction and transformation, and **Power BI** for visualization, the objective was to simulate a real-world business intelligence workflow and transform raw data into actionable decisions.
 
 ---
 
-## 🛠️ Tools & Technologies
+## 🧠 Business Problem / Justification
 
-- SQL (MySQL)
-- Power BI
-- Data Cleaning & Transformation
-- Exploratory Data Analysis (EDA)
-- Business Analysis
+E-commerce businesses generate thousands of transactions, but raw data alone does not explain performance.
+
+This analysis was developed to answer critical business questions such as:
+
+- Is revenue growing consistently over time?
+- Which products generate the highest revenue?
+- Is the business dependent on a few best-selling products?
+- How valuable are repeat customers?
+- What retention opportunities exist?
+
+### 🎯 Who Benefits from This Analysis?
+
+- Business owners  
+- Sales managers  
+- Marketing teams  
+- Data analysts  
+- Growth strategists
 
 ---
 
-## 📊 Dashboard Preview
+## 📈 Dashboard Preview
+
+This interactive dashboard summarizes key KPIs such as revenue, orders, AOV, top-performing products, monthly growth trends, and repeat customer contribution.
 
 ![Dashboard Preview](images/dashboard_preview.PNG)
 
 ---
 
-## 📈 Key Insights
+## 📂 Dataset Information
 
-### 1. Revenue Growth Trend
-Revenue shows a steady upward trend from 2017 to mid-2018, indicating sustained business growth.
+**Source:** Brazilian E-commerce Public Dataset by Olist (Kaggle)  
+**Format:** CSV files loaded into MySQL  
+**Tables Used:**
 
-### 2. Seasonal Sales Peak
-Sales peaked in November 2017, likely driven by seasonal events such as Black Friday promotions.
+- `orders`
+- `customers`
+- `products`
+- `order_items`
+- `payments`
 
-### 3. Long-Tail Product Distribution
-The top 10 products account for only ~3.18% of total revenue, indicating that sales are distributed across a wide range of products rather than concentrated in a few best-sellers.
+**Approximate Size:**
 
-### 4. Customer Retention Impact
-Repeat customers represent only ~3.1% of the customer base but generate ~5.7% of total revenue, showing that returning customers have a higher average value.
+- 100k+ orders
+- 95k+ customers
+- 30k+ products
 
----
+### Key Variables
 
-## 🧠 Analytical Process
+| Variable | Description |
+|--------|-------------|
+| order_id | Unique identifier for each order |
+| customer_unique_id | Unique customer identifier |
+| order_purchase_timestamp | Purchase date/time |
+| product_id | Unique product |
+| price | Product sale value |
+| freight_value | Shipping cost |
 
-The project follows a structured data analysis workflow:
+### Notes
 
-1. **Data Cleaning**
-   - Handling missing values using `NULLIF`
-   - Ensuring correct data types (dates, numeric fields)
-
-2. **Exploratory Data Analysis (EDA)**
-   - Validating dataset consistency
-   - Understanding order volume and customer distribution
-
-3. **Business Analysis**
-   - Revenue analysis
-   - Product performance analysis
-   - Customer behavior analysis
-
----
-
-## 📂 Project Structure
-SQL/
-ecommerce_analysis.sql
-
-data/
-sales_monthly.csv
-top_products.csv
-customer_metrics.csv
-
-dashboard/
-ecommerce_dashboard.pbix
-
-images/
-dashboard_preview.png
-
+- Missing values were cleaned using `NULLIF()`
+- Revenue calculated as: `price + freight_value`
+- Some product metadata fields contained null values
 
 ---
 
-## 🤖 Notes
+## 🔍 Analytical Process
 
-This project was developed as part of a data analytics portfolio.
+## 1️⃣ Data Cleaning
 
-Artificial intelligence tools were used as a learning aid to:
-- guide the analytical workflow
-- validate SQL logic
-- improve documentation and structure
+- Imported multiple CSV tables into MySQL
+- Converted blank values to NULL
+- Validated data types (dates, decimals, integers)
+- Standardized tables for joins
+
+## 2️⃣ Exploratory Data Analysis (EDA)
+
+- Total orders and customers
+- Average items per order
+- Monthly order trends
+- Revenue validation
+- Product sales distribution
+
+## 3️⃣ Business Analysis
+
+- Monthly revenue growth
+- Average Order Value (AOV)
+- Top 10 products by revenue
+- Revenue concentration analysis
+- Repeat customer rate
+- Revenue from returning customers
 
 ---
 
-## 🚀 Key Skills Demonstrated
+## 💡 Key Findings
 
-- SQL querying (JOINs, CTEs, window functions)
-- Data modeling and transformation
-- Business-oriented data analysis
-- Dashboard design and visualization
-- Data storytelling
+### 📌 1. Strong Revenue Growth Trend
+
+Revenue increased steadily from 2017 through mid-2018, indicating healthy business expansion.
+
+### 📌 2. Seasonal Peak in November
+
+The highest revenue month was **November 2017**, likely influenced by Black Friday promotions and seasonal demand.
+
+### 📌 3. Long-Tail Product Model
+
+The **Top 10 products contributed only ~3.18% of total revenue**, meaning sales were widely distributed across many products instead of relying on a few winners.
+
+### 📌 4. Low Retention, High Value Customers
+
+Only **~3.05% of customers were repeat buyers**, but they generated a disproportionately higher share of revenue.
+
+### 📌 5. Opportunity for CRM & Loyalty Programs
+
+Increasing repeat purchase rate could significantly improve profitability with lower acquisition costs.
+
+---
+
+## 🛠️ Tools & Technologies
+
+- **SQL (MySQL)**
+- **Power BI**
+- **Data Cleaning**
+- **Exploratory Data Analysis**
+- **Business Intelligence**
+- **Dashboard Design**
+- **Data Storytelling**
+
+---
+
+## 📁 Repository Structure
+
+```bash
+📦 ecommerce-sales-analysis
+┣ 📂 SQL
+┃ ┗ 📄 ecommerce_analysis.sql
+┣ 📂 data
+┃ ┣ 📄 sales_monthly.csv
+┃ ┣ 📄 top_products.csv
+┃ ┗ 📄 customer_metrics.csv
+┣ 📂 dashboard
+┃ ┗ 📄 ecommerce_dashboard.pbix
+┣ 📂 images
+┃ ┗ 📄 dashboard_preview.PNG
+┣ 📄 README.md
+┗ 📄 LICENSE
+```
+
+# 🚀 How to Use This Project
+## Clone Repository
+- git clone https://github.com/EstebaLoOr/ecommerce-sales-analysis.git
+- cd ecommerce-sales-analysis
+
+# 🧠 SQL Skills Demonstrated
+- JOINs
+- CTEs
+- Aggregations
+- Window Functions
+- Date Functions
+- Revenue Calculations
+- Customer Segmentation
+
+# 👤 Author
+## Esteban López Ortega
+- Github (https://github.com/EstebaLoOr)
+
+⭐ Future Improvements
+Add profit margin analysis
+Customer cohort retention analysis
+Category-level product insights
+Geographic sales heatmaps
+Predictive sales forecasting
+Improved dashboard UX/UI
+
+🤖 Notes
+
+This project was created as part of my Data Analytics portfolio to demonstrate end-to-end analytical thinking:
+
+Raw Data → SQL Analysis → Business Insights → Dashboard Storytelling
+
+AI tools were used as learning support for workflow validation, documentation refinement, and best practices.
