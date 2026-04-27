@@ -190,3 +190,164 @@ This project was created as part of my Data Analytics portfolio to demonstrate e
 Raw Data → SQL Analysis → Business Insights → Dashboard Storytelling
 
 AI tools were used as learning support for workflow validation, documentation refinement, and best practices.
+
+
+### Spanish / Español
+
+# 📊 Análisis de Ventas E-commerce (SQL + Power BI)
+
+## 📌 Descripción General del Proyecto
+
+Este proyecto analiza un conjunto de datos transaccional de e-commerce para descubrir insights de negocio valiosos relacionados con **rendimiento de ventas, contribución de productos, retención de clientes y tendencias de ingresos**.
+
+Utilizando **SQL (MySQL)** para la extracción y transformación de datos, y **Power BI** para la visualización, el objetivo fue simular un flujo de trabajo real de Business Intelligence y convertir datos crudos en decisiones accionables.
+
+---
+
+## 🧠 Problema de Negocio / Justificación
+
+Los negocios de comercio electrónico generan miles de transacciones, pero los datos en bruto por sí solos no explican el desempeño del negocio.
+
+Este análisis fue desarrollado para responder preguntas clave como:
+
+- ¿Los ingresos están creciendo de forma constante?
+- ¿Qué productos generan mayores ingresos?
+- ¿El negocio depende de unos pocos productos estrella?
+- ¿Qué tan valiosos son los clientes recurrentes?
+- ¿Qué oportunidades existen para mejorar la retención?
+
+### 🎯 ¿Quién se beneficia de este análisis?
+
+- Dueños de negocio  
+- Gerentes de ventas  
+- Equipos de marketing  
+- Analistas de datos  
+- Estrategas de crecimiento
+
+---
+
+## 📈 Vista Previa del Dashboard
+
+Este dashboard interactivo resume KPIs clave como ingresos, órdenes, ticket promedio (AOV), productos con mejor desempeño, tendencia mensual de ventas y contribución de clientes recurrentes.
+
+![Dashboard Preview](images/dashboard_preview.PNG)
+
+---
+
+## 📂 Información del Dataset
+
+**Fuente:** Brazilian E-commerce Public Dataset by Olist (Kaggle)  
+**Formato:** Archivos CSV cargados en MySQL  
+**Tablas utilizadas:**
+
+- `orders`
+- `customers`
+- `products`
+- `order_items`
+- `payments`
+
+**Tamaño aproximado:**
+
+- 100k+ órdenes
+- 95k+ clientes
+- 30k+ productos
+
+### Variables Clave
+
+| Variable | Descripción |
+|--------|-------------|
+| order_id | Identificador único de la orden |
+| customer_unique_id | Identificador único del cliente |
+| order_purchase_timestamp | Fecha y hora de compra |
+| product_id | Identificador único del producto |
+| price | Valor de venta del producto |
+| freight_value | Costo de envío |
+
+### Notas
+
+- Los valores faltantes fueron limpiados usando `NULLIF()`
+- Los ingresos fueron calculados como: `price + freight_value`
+- Algunos campos de metadata de productos contenían valores nulos
+
+---
+
+## 🔍 Proceso Analítico
+
+## 1️⃣ Limpieza de Datos
+
+- Importación de múltiples tablas CSV a MySQL
+- Conversión de valores vacíos a NULL
+- Validación de tipos de datos (fechas, decimales, enteros)
+- Estandarización de tablas para realizar JOINs
+
+## 2️⃣ Análisis Exploratorio de Datos (EDA)
+
+- Total de órdenes y clientes
+- Promedio de artículos por orden
+- Tendencia mensual de órdenes
+- Validación de ingresos
+- Distribución de ventas por producto
+
+## 3️⃣ Análisis de Negocio
+
+- Crecimiento mensual de ingresos
+- Ticket promedio por orden (AOV)
+- Top 10 productos por ingresos
+- Concentración de ingresos
+- Tasa de clientes recurrentes
+- Ingresos provenientes de clientes recurrentes
+
+---
+
+## 💡 Hallazgos Principales
+
+### 📌 1. Fuerte Tendencia de Crecimiento
+
+Los ingresos aumentaron de forma constante desde 2017 hasta mediados de 2018, mostrando una expansión saludable del negocio.
+
+### 📌 2. Pico Estacional en Noviembre
+
+El mes con mayores ingresos fue **noviembre de 2017**, probablemente impulsado por promociones de Black Friday y demanda estacional.
+
+### 📌 3. Modelo de Cola Larga (Long Tail)
+
+Los **10 productos principales aportaron solo ~3.18% de los ingresos totales**, lo que indica que las ventas estuvieron distribuidas entre muchos productos y no concentradas en unos pocos.
+
+### 📌 4. Baja Retención, Clientes de Alto Valor
+
+Solo **~3.05% de los clientes fueron compradores recurrentes**, pero generaron una proporción mayor de ingresos.
+
+### 📌 5. Oportunidad para CRM y Programas de Lealtad
+
+Incrementar la tasa de recompra podría mejorar significativamente la rentabilidad al reducir costos de adquisición.
+
+---
+
+## 🛠️ Herramientas y Tecnologías
+
+- **SQL (MySQL)**
+- **Power BI**
+- **Limpieza de Datos**
+- **Análisis Exploratorio de Datos**
+- **Business Intelligence**
+- **Diseño de Dashboards**
+- **Data Storytelling**
+
+---
+
+## 📁 Estructura del Repositorio
+
+```bash
+📦 ecommerce-sales-analysis
+┣ 📂 SQL
+┃ ┗ 📄 ecommerce_analysis.sql
+┣ 📂 data
+┃ ┣ 📄 sales_monthly.csv
+┃ ┣ 📄 top_products.csv
+┃ ┗ 📄 customer_metrics.csv
+┣ 📂 dashboard
+┃ ┗ 📄 ecommerce_dashboard.pbix
+┣ 📂 images
+┃ ┗ 📄 dashboard_preview.PNG
+┣ 📄 README.md
+┗ 📄 LICENSE
